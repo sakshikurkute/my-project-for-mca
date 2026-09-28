@@ -1,0 +1,38 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+
+<section class="login-container">
+
+    <h1>Admin Login 🔐</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <input
+            type="text"
+            name="username"
+            placeholder="Admin Username"
+            required
+        >
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Admin Password"
+            required
+        >
+
+        <button
+            type="submit"
+            class="btn"
+        >
+            Login
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+
+<section class="container">
+
+    <h1>Latest Notes</h1>
+
+    <div class="notes-grid">
+
+        {% for note in notes %}
+
+        <div class="note-card">
+
+            <h3>
+                {{ note.title }}
+            </h3>
+
+            <span class="badge">
+                {{ note.get_note_type_display }}
+            </span>
+
+            <p>
+                {{ note.description }}
+            </p>
+
+
+            {% if note.note_type == 'text' %}
+
+                <div class="text-note">
+                    {{ note.text_content|linebreaks }}
+                </div>
+
+            {% else %}
+
+                {% if note.file %}
+
+                    <a
+                        href="{{ note.file.url }}"
+                        target="_blank"
+                        class="btn"
+                    >
+                        View / Download
+                    </a>
+
+                {% endif %}
+
+            {% endif %}
+
+
+            <small>
+                Uploaded:
+                {{ note.uploaded_at|date:"d M Y H:i" }}
+            </small>
+
+        </div>
+
+        {% empty %}
+
+        <p>
+            No notes available.
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

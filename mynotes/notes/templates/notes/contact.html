@@ -1,0 +1,26 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+
+<section class="form-container">
+
+    <h1>Contact Us</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button
+            type="submit"
+            class="btn"
+        >
+            Send Message
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+
+<section class="container">
+
+    <div class="dashboard-header">
+
+        <h1>Admin Dashboard</h1>
+
+        <a
+            href="{% url 'admin_logout' %}"
+            class="logout"
+        >
+            Logout
+        </a>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat-card">
+            <h3>Total Notes</h3>
+            <p>{{ total_notes }}</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>PDF Notes</h3>
+            <p>{{ pdf_count }}</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Image Notes</h3>
+            <p>{{ image_count }}</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Text Notes</h3>
+            <p>{{ text_count }}</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Messages</h3>
+            <p>{{ total_contacts }}</p>
+        </div>
+
+    </div>
+
+
+    <h2>All Notes</h2>
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Date</th>
+        </tr>
+
+        {% for note in notes %}
+
+        <tr>
+
+            <td>
+                {{ note.id }}
+            </td>
+
+            <td>
+                {{ note.title }}
+            </td>
+
+            <td>
+                {{ note.get_note_type_display }}
+            </td>
+
+            <td>
+                {{ note.uploaded_at }}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+
+    <h2>Contact Messages</h2>
+
+    <table>
+
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Date</th>
+        </tr>
+
+        {% for contact in contacts %}
+
+        <tr>
+
+            <td>
+                {{ contact.name }}
+            </td>
+
+            <td>
+                {{ contact.email }}
+            </td>
+
+            <td>
+                {{ contact.message }}
+            </td>
+
+            <td>
+                {{ contact.created_at }}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MyNotes</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/style.css' %}"
+    >
+</head>
+
+<body>
+
+<header>
+
+    <div class="navbar">
+
+        <h2>📚 MyNotes</h2>
+
+        <nav>
+
+            <a href="{% url 'home' %}">
+                Home
+            </a>
+
+            <a href="{% url 'notes' %}">
+                Notes
+            </a>
+
+            <a href="{% url 'upload' %}">
+                Upload
+            </a>
+
+            <a href="{% url 'about' %}">
+                About Us
+            </a>
+
+            <a href="{% url 'contact' %}">
+                Contact
+            </a>
+
+            <a href="{% url 'admin_login' %}">
+                Admin
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+{% if messages %}
+
+    <div class="messages">
+
+        {% for message in messages %}
+
+            <div class="message">
+                {{ message }}
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+{% endif %}
+
+
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 MyNotes | All Rights Reserved
+    </p>
+
+</footer>
+
+</body>
+
+</html>

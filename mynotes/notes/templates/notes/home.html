@@ -1,0 +1,64 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+
+<section class="hero">
+
+    <h1>Welcome to MyNotes 📚</h1>
+
+    <p>
+        Store, share and discover useful study notes
+        in PDF, image and text formats.
+    </p>
+
+    <a
+        href="{% url 'upload' %}"
+        class="btn"
+    >
+        Upload Your Notes
+    </a>
+
+</section>
+
+
+<section class="container">
+
+    <h2>Latest Notes</h2>
+
+    <div class="notes-grid">
+
+        {% for note in latest_notes %}
+
+        <div class="note-card">
+
+            <h3>
+                {{ note.title }}
+            </h3>
+
+            <span class="badge">
+                {{ note.get_note_type_display }}
+            </span>
+
+            <p>
+                {{ note.description|truncatewords:20 }}
+            </p>
+
+            <small>
+                {{ note.uploaded_at|date:"d M Y" }}
+            </small>
+
+        </div>
+
+        {% empty %}
+
+        <p>
+            No notes uploaded yet.
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}
