@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to the Dashboard</h1>
+    <p>Hello, {{ request.user.username }}!</p>
+    <a href="{% url 'logout' %}">Logout</a>
+
+    <h1>Contact Details</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Location</th>
+                <th>Submitted At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.contact }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.subject }}</td>
+                <td>{{ contact.message }}</td>
+                <td>{{ contact.location }}</td>
+                <td>{{ contact.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
