@@ -1,0 +1,20 @@
+<div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {% for event in events %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <img src="{{ event.image.url }}" class="d-block w-100" alt="{{ event.name }}">
+        <div class="carousel-caption">
+          <h5>{{ event.name }}</h5>
+          <p>{{ event.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <a class="carousel-control-prev" href="#eventCarousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </a>
+    <a class="carousel-control-next" href="#eventCarousel" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+  </div>
+  
