@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate</title>
+    <style>
+        /* Simple CSS for the navigation bar */
+        nav {
+            background-color: #4CAF50;  /* Green background for the navbar */
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Video background */
+        .video-background {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Styling for the content */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;  /* Dark footer */
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .site-footer {
+            background-color: #f8f9fa;
+            padding: 40px 0 20px;
+            font-family: Arial, sans-serif;
+        }
+    
+        .container {
+            max-width: 1400px; /* Increased from typical 1200px */
+            margin: 0 auto;
+            padding: 0 30px; /* Increased padding for larger screens */
+        }
+    
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+    
+        .footer-logo img {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+    
+        .footer-logo p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+    
+        .footer-logo h3 {
+            font-size: 24px;
+            color: #4a90e2;
+            margin: 0;
+        }
+    
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            width: 70%;
+        }
+    
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+    
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+    
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+    
+        .footer-column ul li a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    
+        .footer-column ul li a:hover {
+            color: #4a90e2;
+        }
+    
+        .pdf-association-logo {
+            max-width: 100px;
+            margin-top: 10px;
+        }
+    
+        .social-icons {
+            margin-top: 15px;
+        }
+    
+        .social-icons a {
+            margin-right: 10px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            font-size: 14px;
+        }
+    
+        .footer-bottom p {
+            color: #666;
+            margin: 0;
+        }
+    
+        .footer-bottom-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+    
+        .footer-bottom-links li {
+            margin-right: 15px;
+        }
+    
+        .footer-bottom-links li a {
+            color: #666;
+            text-decoration: none;
+        }
+    
+        .support-button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    
+        /* Support Popup Styles */
+        .support-popup {
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+        }
+    
+        .support-content {
+            padding: 20px;
+            color: #333;
+        }
+    
+        .support-content h2 {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    
+        .support-content .support-button {
+            background: linear-gradient(90deg, #43cea2, #185a9d, #43cea2);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+    
+        .support-content textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+            resize: vertical;
+            min-height: 100px;
+        }
+    
+        .footer-support-button {
+            background: linear-gradient(90deg, #4a90e2, #63b3ed, #4a90e2);
+            background-size: 200% 100%;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            animation: shimmer 3s infinite;
+        }
+    
+        .footer-support-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/login">Login</a>
+        <a href="/signup">Signup</a>
+    </nav>
+
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="your-video-file.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Front Page Content -->
+    <div class="content">
+        <h1>Welcome to Our Real Estate Website</h1>
+        <h2>Available Properties</h2>
+        <ul>
+            {% for property in properties %}
+                <li>{{ property.title }} - {{ property.price }} - {{ property.location }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Why Choose Us?</h2>
+        <p>We offer a variety of real estate options to fit your needs. Whether you're looking to buy, rent, or sell, our team is here to provide expert guidance through the entire process.</p>
+        <p>Our services include property management, real estate advice, investment opportunities, and much more. We ensure a seamless experience for all our clients.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="path/to/wondershare-hipdf-logo.png" alt="Wondershare HiPDF">
+                    <p>Files Converted Since 2003</p>
+                    <h3 id="file-count">0</h3>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Popular Tools</h4>
+                        <ul>
+                          
+                            <li><a href="#">PDF Converter</a></li>
+                            <li><a href="#">PDF to Word</a></li>
+                            <li><a href="#">Compress PDF</a></li>
+                            <li><a href="#">Crop PDF</a></li>
+                            <li><a href="#">Edit PDF</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                        <p>- Trusted by -</p>
+                        <img src="path/to/pdf-association-logo.png" alt="PDF Association" class="pdf-association-logo">
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">How-Tos</a></li>
+                            <li><a href="#">Pricing</a></li>
+                            <li><a href="#">Plugin</a></li>
+                        </ul>
+                        <h4>Follow us</h4>
+                        <div class="social-icons">
+                            <a href="#" class="facebook-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="instagram-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="youtube-icon"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Wondershare HiPDF All rights reserved.</p>
+                <ul class="footer-bottom-links">
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+                <button class="footer-support-button">Support</button>
+            </div>
+        </div>
+    </footer> 
+
+
+</body>
+</html>
